@@ -1,0 +1,150 @@
+Course setup
+
+Software
+
+Textbook
+
+Syllabus/calendar
+
+Canvas
+
+Discord
+
+What to do before class each week
+
+////////////////////
+
+Intro to C
+
+Hello, world program
+
+Compiler warnings (-Wall)
+
+////////////////////////////
+
+Types
+
+    int, short, long
+    double, float, long double
+    char
+
+    signed vs unsigned
+
+    string?
+    bool?
+
+
+Sizes of Types
+    sizeof(type)
+
+    int: 4 bytes
+    char: 1 byte
+    float: 4 bytes
+    double: 8 bytes
+
+////////////////////////////
+
+Variables and operations
+
+Where to declare variables
+
+Uninitialized variables
+
+////////////////////////////
+
+Printing Variables
+
+printf using control strings
+
+printf("string to print", corresponding variable list);
+
+int: %d
+char: %c
+float: %f
+double: %lf
+
+////////////////////////////
+
+Formatting output
+
+double pi = 3.14159;
+printf("Value is: %.2lf\n", pi);
+
+printf("Spaced out: %6.2lf\n", pi);
+
+////////////////////////////
+
+Getting user input (stdio.h)
+
+getchar
+    - returns next character in input stream (EOF if empty...but stdin is never empty)
+    - no arguments
+
+scanf
+    - 1st argument: control string describing input format (like printf)
+    - next arguments: memory addresses of where to store each value
+
+//////////////////////////
+
+Example: read in age and GPA
+
+int age;
+double gpa;
+
+printf("Enter age: ");
+//read in age
+
+printf("Enter GPA: ");
+//read in GPA
+
+/////////////////////////////
+
+Example: read in a fraction
+
+int num, denom;
+printf("Enter fraction, like 3/5: ");
+
+
+////////////////////////////
+
+User input pitfalls
+
+What if the user enters unexpected input for scanf?
+
+What if you use getchar or scanf to read two characters (as separate inputs)?
+
+What about strings?
+
+////////////////////////////
+
+Conditional statements
+
+
+
+//////////////////////////
+
+Loops
+
+
+///////////////////////////
+
+Functions
+
+Function prototypes
+    - what if we leave them off?
+
+///////////////////////////
+
+Example: area of circle
+
+///////////////////////////
+
+VS code
+
+Using git by command line
+
+//////////////////////////
+
+Lab 1 instructions
+
+How to get lab credit
