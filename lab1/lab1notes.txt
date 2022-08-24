@@ -1,3 +1,7 @@
+CIS 308, C Language Lab.
+Julie Thornton.
+
+
 Course setup
 
 Software
@@ -12,13 +16,23 @@ Discord
 
 What to do before class each week
 
+
 ////////////////////
 
 Intro to C
 
+
+
+
 Hello, world program
 
+
+
 Compiler warnings (-Wall)
+
+
+
+
 
 ////////////////////////////
 
@@ -34,7 +48,7 @@ Types
     bool?
 
 
-Sizes of Types
+Type sizes
     sizeof(type)
 
     int: 4 bytes
@@ -46,22 +60,39 @@ Sizes of Types
 
 Variables and operations
 
+
+
+
+
 Where to declare variables
+
+
+
+
 
 Uninitialized variables
 
+
+
+
 ////////////////////////////
 
-Printing Variables
+Printing Variables, stdio.h
+
 
 printf using control strings
 
+
 printf("string to print", corresponding variable list);
+
 
 int: %d
 char: %c
 float: %f
 double: %lf
+
+
+
 
 ////////////////////////////
 
@@ -70,7 +101,16 @@ Formatting output
 double pi = 3.14159;
 printf("Value is: %.2lf\n", pi);
 
+
+
+
+
+
 printf("Spaced out: %6.2lf\n", pi);
+
+
+
+
 
 ////////////////////////////
 
@@ -80,9 +120,13 @@ getchar
     - returns next character in input stream (EOF if empty...but stdin is never empty)
     - no arguments
 
+
+
 scanf
     - 1st argument: control string describing input format (like printf)
     - next arguments: memory addresses of where to store each value
+
+
 
 //////////////////////////
 
@@ -94,8 +138,12 @@ double gpa;
 printf("Enter age: ");
 //read in age
 
+
+
 printf("Enter GPA: ");
 //read in GPA
+
+
 
 /////////////////////////////
 
@@ -105,15 +153,40 @@ int num, denom;
 printf("Enter fraction, like 3/5: ");
 
 
+
+
+
+
+
+
+
+
+
+
+////////////////////////////
+
+scanf and whitespace
+
+
+
+
+
+
 ////////////////////////////
 
 User input pitfalls
 
 What if the user enters unexpected input for scanf?
 
+
+
 What if you use getchar or scanf to read two characters (as separate inputs)?
 
+
+
 What about strings?
+
+
 
 ////////////////////////////
 
@@ -121,9 +194,12 @@ Conditional statements
 
 
 
+
 //////////////////////////
 
 Loops
+
+
 
 
 ///////////////////////////
@@ -133,15 +209,24 @@ Functions
 Function prototypes
     - what if we leave them off?
 
+
+
 ///////////////////////////
 
 Example: area of circle
+
+
+
 
 ///////////////////////////
 
 VS code
 
+
+
 Using git by command line
+
+
 
 //////////////////////////
 
