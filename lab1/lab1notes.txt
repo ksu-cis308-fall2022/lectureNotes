@@ -19,7 +19,16 @@ What to do before class each week
 
 ////////////////////
 
-Intro to C
+Creating directory structure
+
+
+
+Opening VS code
+
+
+
+Cloning repository
+
 
 
 
@@ -28,9 +37,7 @@ Hello, world program
 
 
 
-Compiler warnings (-Wall)
-
-
+Adding/committing/pushing your changes
 
 
 
@@ -60,7 +67,7 @@ Type sizes
 
 Variables and operations
 
-
+int x;
 
 
 
@@ -72,7 +79,12 @@ Where to declare variables
 
 Uninitialized variables
 
+    What prints in Java?
+        int x;
+        System.out.println(x);
 
+
+    What about C?
 
 
 ////////////////////////////
@@ -93,21 +105,33 @@ double: %lf
 
 
 
+int age = 10;
+
+want to print: I am 10 years old
+
+printf("I am %d years old", age);
+
 
 ////////////////////////////
 
 Formatting output
 
 double pi = 3.14159;
+
+printf("Pi is: %lf\n", pi);
+
+Pi is 3.14159
+
+
 printf("Value is: %.2lf\n", pi);
 
 
-
-
+Pi is 3.14
 
 
 printf("Spaced out: %6.2lf\n", pi);
 
+Pi is   3.14
 
 
 
@@ -137,12 +161,12 @@ double gpa;
 
 printf("Enter age: ");
 //read in age
-
+scanf("%d", age);
 
 
 printf("Enter GPA: ");
 //read in GPA
-
+scanf("%lf", &gpa);
 
 
 /////////////////////////////
@@ -153,7 +177,7 @@ int num, denom;
 printf("Enter fraction, like 3/5: ");
 
 
-
+scanf("%d/%d", &num, &denom);
 
 
 
@@ -168,7 +192,8 @@ printf("Enter fraction, like 3/5: ");
 scanf and whitespace
 
 
-
+int x, y;
+scanf("%d%d", &x, &y);
 
 
 
@@ -206,6 +231,11 @@ Loops
 
 Functions
 
+returnType functionName(paramList) {
+
+}
+
+
 Function prototypes
     - what if we leave them off?
 
@@ -219,16 +249,6 @@ Example: area of circle
 
 
 ///////////////////////////
-
-VS code
-
-
-
-Using git by command line
-
-
-
-//////////////////////////
 
 Lab 1 instructions
 
