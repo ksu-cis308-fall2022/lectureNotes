@@ -17,13 +17,13 @@ preprocess / compile / assemble / link ("C toolchain")
 
 gcc -save-temps week2.c
 
-a-hello.i: after pre-processor
+a-week2.i: after pre-processor
     includes all header files, all macros have been applied,
     all comments have been removed
 
-a-hello.s: assembly code for selected architecture
+a-week2.s: assembly code for selected architecture
 
-a-hello.o: object code / machine code
+a-week2.o: object code / machine code
 
 a.exe: also machine code, but after the linking step for all
     libraries. Multiple .o files might be linked for an executable.
@@ -83,6 +83,18 @@ returnType functionName(type name[], ...) {
 
 What do we probably want to pass also?
 
+///////////////////////
+
+Returning an array from a function:
+
+int[] get_array() {
+    int nums[5];
+    return nums;
+}
+
+//(need to return int*, not int[])
+//...but should NOT do
+//nums is allocated on the stack, and its memory ends when the function ends
 
 ///////////////////////
 
@@ -110,15 +122,19 @@ char temp[] = "Hello";
 
 --> what does temp look like?
 
+
+
+
+
 char str[] = {'h', 'i', '\o'};
 
 
-//can we do:
-temp = str;     //NO! constant memory addresses
+//can we do?
+temp = str;     //
 
 
-//can we do:
-temp[0] = 'C';  //YES! strings in C are not immutable
+//can we do?
+temp[0] = 'C';  //
 
 
 ////////////////////////
@@ -192,7 +208,7 @@ strlen returns an UNSIGNED INT
 unless otherwise stored as/cast to an int, C will try to do operations
     as unsigned if another unsigned value is involved
 
-char test = {'\0'}';   //test is an empty string
+char test[] = {'\0'}';   //test is an empty string
 if (strlen(test) - 10 >= 0) {
     printf("yes\n");
 }
