@@ -81,7 +81,7 @@ returnType functionName(type name[], ...) {
 
 }
 
-What do we probably want to pass also?
+What do we probably want to pass also? the size of the array!
 
 ///////////////////////
 
@@ -101,6 +101,8 @@ int[] get_array() {
 Multi-dimensional arrays:
 
 type name[rows][cols];
+
+rows/cols are constants
 
 
 //////////////////////
@@ -123,23 +125,24 @@ char temp[] = "Hello";
 --> what does temp look like?
 
 
+temp is {'H', 'e', 'l', 'l', 'o', '\0'}
 
 
-
-char str[] = {'h', 'i', '\o'};
-
-
-//can we do?
-temp = str;     //
+char str[] = {'h', 'i', '\0'};
 
 
 //can we do?
-temp[0] = 'C';  //
+temp = str;     //no! temp is constant
+
+
+//can we do?
+temp[0] = 'C';  //yes!
 
 
 ////////////////////////
 
 Example: write a function to count how many times a letter appears
+in a word
 
 
 ////////////////////////
@@ -156,6 +159,8 @@ int len = strlen(test);     //len will be 5
 
 printing strings - use %s control string
 
+char test[] = "apple";
+printf("The word is: %s\n", test);
 
 ////////////////////////
 
@@ -167,6 +172,8 @@ scanf("%s", buff);          //why no &?
 
 
 --> what is dangerous about this approach?
+
+Enter a word: apple
 
 
 ///////////////////////
