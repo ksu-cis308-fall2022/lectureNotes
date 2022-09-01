@@ -81,7 +81,7 @@ returnType functionName(type name[], ...) {
 
 }
 
-What do we probably want to pass also? 
+What do we probably want to pass also? pass the length also
 
 ///////////////////////
 
@@ -124,6 +124,7 @@ char temp[] = "Hello";
 
 --> what does temp look like?
 
+temp: {'H', 'e', 'l', 'l', 'o', '\0'}
 
 
 
@@ -161,6 +162,9 @@ printing strings - use %s control string
 
 char test[] = "apple";
 printf("The word is: %s\n", test);
+
+The word is apple
+
 
 ////////////////////////
 
@@ -201,6 +205,8 @@ char name[10];
 printf("Enter your name: ");
 fgets(name, 10, stdin);
 
+name: "Bob\n"
+
 
 //strcspn returns #characters in 1st param before reaching any in 2nd param
 name[strcspn(name, "\n")] = '\0';
@@ -236,5 +242,7 @@ write a substring function
 parameters: starting index, length, original string, place to put substring
 
 example: 3 (start), 5 (length), "elephant" (orig), (char buffer)
+
+buffer: {'p', 'h', 'a', 'n', 't', '\0'}
 
 main function will loop to call substring
