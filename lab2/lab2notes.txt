@@ -81,7 +81,7 @@ returnType functionName(type name[], ...) {
 
 }
 
-What do we probably want to pass also? the size of the array!
+What do we probably want to pass also? 
 
 ///////////////////////
 
@@ -125,18 +125,18 @@ char temp[] = "Hello";
 --> what does temp look like?
 
 
-temp is {'H', 'e', 'l', 'l', 'o', '\0'}
+
 
 
 char str[] = {'h', 'i', '\0'};
 
 
 //can we do?
-temp = str;     //no! temp is constant
+temp = str;     
 
 
 //can we do?
-temp[0] = 'C';  //yes!
+temp[0] = 'C';  
 
 
 ////////////////////////
@@ -147,7 +147,7 @@ in a word
 
 ////////////////////////
 
-string.h
+#include <string.h>
 
 strlen - takes string as a parameter, returns its length;
 
@@ -231,3 +231,10 @@ Project 1 - brief discussion
 /////////////////////////////
 
 Lab 2
+
+write a substring function
+parameters: starting index, length, original string, place to put substring
+
+example: 3 (start), 5 (length), "elephant" (orig), (char buffer)
+
+main function will loop to call substring
