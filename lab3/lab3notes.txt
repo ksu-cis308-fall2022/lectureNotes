@@ -1,0 +1,228 @@
+New assistants: Jack Rigdon and Mason Vick
+
+office hour times have been updated
+(check Google calendar in syllabus)
+
+
+//////////////////////////////
+
+Project 1 due Wednesday, September 14
+--> start now if you haven't already!
+
+find/replace idea
+
+
+
+///////////////////////////////
+
+conversions
+
+#include <stdlib.h>
+
+
+char intstr[] = "14";
+int num = atoi(intstr);     //returns 0 if can't do the conversion
+
+char doublestr[] = "3.14";
+double pi = atof(doublestr);
+
+int num = 747;
+char buff[20];
+itoa(num, buff, 10);        //the "10" means base-10
+
+double val = 7.417;
+char buff2[20];
+ftoa(val, buff2, 10);
+
+//////////////////////////////
+
+more string functions - #include <string.h>
+
+- I won't mention all string functions here
+- make sure you read textbook chapter on strings if you haven't already
+
+//////////////////////////////
+
+char[] strcat(char str1[], char str2[]);
+
+Copies characters in str2 onto the end of str1.
+Returns the newly concatenated string 
+(although str1 also references the concatenated string).
+
+
+
+For example:
+
+char str1[20];
+char str2[20];
+printf("Enter two words: ");    //Suppose you entered "hi hello"
+scanf("%s %s", str1, str2);     //this is not the safest input...
+
+strcat(str1, str2);     //what is str1?
+strcat(str1, str2);     //what is str1?
+
+
+
+////////////////////////////
+
+char[] strcpy(char str1[], char str2[]);
+This function copies the characters in str2 into str1, 
+overwriting anything that was already in str1. 
+It returns the newly copied string (str1 also references the copied string).
+
+
+
+For example:
+
+char src[20];
+char dest[20];
+
+printf("Enter a word: ");
+scanf("%s", src); 			//Suppose you entered "hello"
+
+strcpy(dest, src); 			//Now dest also holds "hello"
+
+src[0] = 'B'; 				//Now src is "Bello", and dest is "hello"
+
+strcpy(dest, "another");    //Now dest is "another"
+
+/////////////////////////////
+
+int strcmp(char str1[], char str2[]);
+
+Compares str1 and str2 to see which string comes first alphabetically 
+
+Returns:
+- less than 0, if str1 comes alphabetically before str2
+- 0, if str1 equals str2
+- greater than 0, if str1 comes alphabetically after str2
+
+
+For example:
+
+char str1[20];
+char str2[20];
+printf("Enter two words: "); //Suppose you entered "hi hello"
+scanf("%s %s", str1, str2);
+
+if (strcmp(str1, str2) < 0) {
+	printf("%s comes first\n", str1);
+}
+else if (strcmp(str1, str2) > 0) {
+	printf("%s comes first\n", str2);
+}
+else {
+	printf("The strings are equal\n");
+}
+
+/////////////////////////////////
+
+char[] strtok(char str[], char delim[]);
+
+- Returns the first token found in str before the occurrence 
+    of any character in delim. 
+- After the first call to strtok, pass NULL as str
+    to tell it to continue looking for tokens in the original string.
+- If there are multiple delimeters in a row, it will skip all of them
+    (like Java StringTokenizer)
+
+
+
+For example:
+
+char buff[200];
+char *token;    //a char pointer - more later
+
+printf("Enter names, separated by commas: ");
+fgets(buff, 200, stdin);    //"Fred,James,Jane,Lynn"
+
+buff[strcspn(buff, "\n")] = '\0';
+
+token = strtok(buff, ",");
+while (token != NULL) 
+{
+	printf("%s\n", token);
+	token = strtok(NULL, ",");
+}
+
+//////////////////////////////
+
+File I/O
+
+#include <stdio.h>
+
+
+
+1) Connect to the file
+
+FILE *conn_name = fopen(filename, mode);
+
+- filename is a string (looks in same dir as .c file without abs. path)
+- mode is "r" or "w" (plus other options - see text)
+- returns NULL if file can't be opened
+
+
+
+
+
+2) Read from the file
+
+fgets(buff, size, conn_name)
+
+--> just like fgets from stdin (reads one line at a time)
+--> returns NULL if reaches end of input
+--> stores the \n
+
+-OR-
+
+fscanf(conn_name, "what to read", variable addresses);
+
+--> just like scanf, with control strings
+--> returns the number of variables correctly read (0 if none)
+--> returns EOF if at end of file
+
+
+
+
+3) Write to the file (just like printf)
+
+fprintf(FILE* fp, char str[], variables to print...)
+
+
+
+
+4) Close the file
+
+fclose(conn_name);
+
+
+
+///////////////////////////////////
+
+Lab 2 - finish substring, get checked off
+
+key problems:
+
+void substring(char orig[], char sub[], int start, int len)
+
+//what is wrong?
+for(int i = start; i < len; i++) {
+
+}
+
+//what to do with sub after loop?
+
+in main function:
+- original string comes from user input
+- substring length comes from user input
+- what to pass as the "sub" parameter to substring?
+- what to pass as the "start" parameter to substring?
+
+///////////////////////////////////
+
+Lab 3 - convert a file of dates to a different format
+
+12/31/1999 to December 31, 1999
+
+uses command-line arguments - see quick example
+
