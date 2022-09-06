@@ -58,8 +58,8 @@ char str2[20];
 printf("Enter two words: ");    //Suppose you entered "hi hello"
 scanf("%s %s", str1, str2);     //this is not the safest input...
 
-strcat(str1, str2);     //what is str1?
-strcat(str1, str2);     //what is str1?
+strcat(str1, str2);     //what is str1? //hihello\0
+strcat(str1, str2);     //what is str1? hihellohello\0
 
 
 
@@ -80,44 +80,16 @@ char dest[20];
 printf("Enter a word: ");
 scanf("%s", src); 			//Suppose you entered "hello"
 
-strcpy(dest, src); 			//Now dest also holds "hello"
+							//pretend dest was banana\0
+strcpy(dest, src); 			//dest will be hello\0\0
 
-src[0] = 'B'; 				//Now src is "Bello", and dest is "hello"
+src[0] = 'B'; 				//src is "Bello", dest is still "hello"
 
-strcpy(dest, "another");    //Now dest is "another"
+strcpy(dest, "another");    //dest is another\0
 
 /////////////////////////////
 
-int strcmp(char str1[], char str2[]);
-
-Compares str1 and str2 to see which string comes first alphabetically 
-
-Returns:
-- less than 0, if str1 comes alphabetically before str2
-- 0, if str1 equals str2
-- greater than 0, if str1 comes alphabetically after str2
-
-
-For example:
-
-char str1[20];
-char str2[20];
-printf("Enter two words: "); //Suppose you entered "hi hello"
-scanf("%s %s", str1, str2);
-
-if (strcmp(str1, str2) < 0) {
-	printf("%s comes first\n", str1);
-}
-else if (strcmp(str1, str2) > 0) {
-	printf("%s comes first\n", str2);
-}
-else {
-	printf("The strings are equal\n");
-}
-
-/////////////////////////////////
-
-char[] strtok(char str[], char delim[]);
+char* strtok(char str[], char delim[]);
 
 - Returns the first token found in str before the occurrence 
     of any character in delim. 
@@ -163,6 +135,7 @@ FILE *conn_name = fopen(filename, mode);
 
 
 
+////////////////////////////////////
 
 
 2) Read from the file
@@ -173,6 +146,12 @@ fgets(buff, size, conn_name)
 --> returns NULL if reaches end of input
 --> stores the \n
 
+char buff[30];
+while (fgets(buff, size, conn_name) != NULL) {
+	//do something with the current line (buff)
+}
+
+
 -OR-
 
 fscanf(conn_name, "what to read", variable addresses);
@@ -181,7 +160,7 @@ fscanf(conn_name, "what to read", variable addresses);
 --> returns the number of variables correctly read (0 if none)
 --> returns EOF if at end of file
 
-
+/////////////////////////////////
 
 
 3) Write to the file (just like printf)
@@ -189,7 +168,7 @@ fscanf(conn_name, "what to read", variable addresses);
 fprintf(FILE* fp, char str[], variables to print...)
 
 
-
+////////////////////////////////////
 
 4) Close the file
 
@@ -205,24 +184,36 @@ key problems:
 
 void substring(char orig[], char sub[], int start, int len)
 
+//orig is "bananas"
+//start is 5
+//len is 2
+
 //what is wrong?
-for(int i = start; i < len; i++) {
+for(int i = start; i < start+len; i++) {
 
 }
 
 //what to do with sub after loop?
+put a \0 in your sub
+sub[len] = '\0';
+
+
 
 in main function:
 - original string comes from user input
 - substring length comes from user input
 - what to pass as the "sub" parameter to substring?
+
+make a string for the substring:
+char sub[20];
+
 - what to pass as the "start" parameter to substring?
+
+
 
 ///////////////////////////////////
 
 Lab 3 - convert a file of dates to a different format
 
 12/31/1999 to December 31, 1999
-
-uses command-line arguments - see quick example
 
