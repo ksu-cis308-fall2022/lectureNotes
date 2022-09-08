@@ -1,4 +1,4 @@
-New assistants: Jack Rigdon and Mason Vick
+New assistant: Jack Rigdon
 
 office hour times have been updated
 (check Google calendar in syllabus)
@@ -11,28 +11,28 @@ Project 1 due Wednesday, September 14
 
 find/replace idea
 
+find: the
+replace: blah
 
+blahse horses are blah fastest animals
+blah first blahrapy is talking
 
 ///////////////////////////////
 
-conversions
+conversion to string (more in the textbook)
 
-#include <stdlib.h>
+int age = 10;
 
 
-char intstr[] = "14";
-int num = atoi(intstr);     //returns 0 if can't do the conversion
+char str[20];
+sprintf(str, "%d", age);
 
-char doublestr[] = "3.14";
-double pi = atof(doublestr);
+--> what is in str?
 
-int num = 747;
-char buff[20];
-itoa(num, buff, 10);        //the "10" means base-10
+//str: "10\0....."
 
-double val = 7.417;
-char buff2[20];
-ftoa(val, buff2, 10);
+--> can store other values in a string that way
+
 
 //////////////////////////////
 
@@ -53,17 +53,37 @@ Returns the newly concatenated string
 
 For example:
 
-char str1[20];
-char str2[20];
-printf("Enter two words: ");    //Suppose you entered "hi hello"
-scanf("%s %s", str1, str2);     //this is not the safest input...
+char test[] = "hi"; //h, i, \0
+char buff[10];
 
-strcat(str1, str2);     //what is str1? //hihello\0
-strcat(str1, str2);     //what is str1? hihellohello\0
+--> strcat test onto buff
+	(what do both strings look like now?)
+
+strcat(buff, test);
+
+//buff: "hi\0...."
+//test: "hi"
+
+--> strcat test onto buff again
 
 
+strcat(buff, test);
+
+buff: "hihi\0..."
+test: "hi"
+
+--> can we strcat onto test? (NO! Not enough space)
+
+strcat(test, buff);
 
 ////////////////////////////
+
+
+string s1 = "hi";
+string s2 = s1;
+
+char s1[] = "hi";
+char s2[] = s1; //NO!
 
 char[] strcpy(char str1[], char str2[]);
 This function copies the characters in str2 into str1, 
@@ -74,18 +94,30 @@ It returns the newly copied string (str1 also references the copied string).
 
 For example:
 
-char src[20];
+char test[] = "hi";
 char dest[20];
 
-printf("Enter a word: ");
-scanf("%s", src); 			//Suppose you entered "hello"
 
-							//pretend dest was banana\0
-strcpy(dest, src); 			//dest will be hello\0\0
+--> make dest have the characters from test
 
-src[0] = 'B'; 				//src is "Bello", dest is still "hello"
+strcpy(dest, test);
 
-strcpy(dest, "another");    //dest is another\0
+dest: hi\0....
+test: unchanged
+
+strcpy(dest, test);
+dest: hi\0
+test: unchanged
+
+--> copy "again" into dest
+
+strcpy(dest, "again");
+
+dest: again\0....
+
+strcpy(dest, "b");
+
+dest: b\0ain\0
 
 /////////////////////////////
 
@@ -178,42 +210,16 @@ fclose(conn_name);
 
 ///////////////////////////////////
 
-Lab 2 - finish substring, get checked off
-
-key problems:
-
-void substring(char orig[], char sub[], int start, int len)
-
-//orig is "bananas"
-//start is 5
-//len is 2
-
-//what is wrong?
-for(int i = start; i < start+len; i++) {
-
-}
-
-//what to do with sub after loop?
-put a \0 in your sub
-sub[len] = '\0';
-
-
-
-in main function:
-- original string comes from user input
-- substring length comes from user input
-- what to pass as the "sub" parameter to substring?
-
-make a string for the substring:
-char sub[20];
-
-- what to pass as the "start" parameter to substring?
-
-
-
-///////////////////////////////////
-
 Lab 3 - convert a file of dates to a different format
 
 12/31/1999 to December 31, 1999
 
+Uses command line arguments
+
+int main(int argc, char* argv[])
+
+
+./a.exe dates.txt out.txt
+
+argv[0] will be "./a.exe"
+argv[1] will be input file 
