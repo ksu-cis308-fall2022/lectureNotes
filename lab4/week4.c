@@ -20,7 +20,6 @@ int main() {
     return 0;
 }
 
-//this won't work
 void swap(int* a, int* b) {
 	int temp = *a;
 	*a = *b;
