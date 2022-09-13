@@ -2,7 +2,8 @@ Proj1 due Wed Sep 14
 
 /////////////////////////
 
-A pointer holds a memory address.
+A pointer is a variable that holds a 
+memory address.
 
 
 Declare:
@@ -22,7 +23,7 @@ Gets the memory address of a variable
 
 int x = 4;
 
-
+&x
 
 How do we get the memory address of x?
 
@@ -35,7 +36,11 @@ int x = 4;
 int* numPtr = &x;
 
 
---> what if we leave off the "&"
+
+--> what if we leave off the "&"?
+
+
+
 
 
 /////////////////////////
@@ -64,22 +69,31 @@ int x = 4;
 int* numPtr = &x;
 
 
-//what does this do?
+
+//What does each line do?
+
 numPtr++;
 
-//what about this?
 numPtr-=5;
 
-//what about this?
 numPtr = &x - 1;
 
+//the next lines are bad!
 
-//this is very wrong. but what would it do?
-numPtr = *x - 1;
+numPtr = *x - 1; //get the value of memory 
+                //location 4 and subtract 1
+
+numPtr = x; //numPtr holds a 4 like it's
+            //a memory address
+
+*numPtr = 10; //put a 10 at memory location 4
 
 /////////////////////////
 
 Pointers and arrays.
+
+an array is a constant pointer to the 
+first element in that array
 
 
 int nums[10];
@@ -90,27 +104,32 @@ What is nums?
 
 int* arrPtr = &nums[0];     //what does this do?
 
-arrPtr = nums;              //how about this?
+arrPtr = nums;              //exactly the same
 
 arrPtr = &nums[1];          //this?
 
 arrPtr = nums + 4;          //this?
-
+//equiv: arrPtr = &nums[4];
 
 *arrPtr = 7;                //this?
 
 *(nums + 2) = 10;           //this?
+//equiv: nums[2] = 10;
 
 arrPtr++;                   //this?
 
 nums++;                     //this?
+//NO! nums is a constant pointer
 
 /////////////////////////
 
 Call by reference
 
-- can pass memory addresses (pointers) to functions
-- will let that function change what is at that spot in memory
+- can pass memory addresses (pointers) to 
+    functions
+
+- will let that function change what is 
+    at that spot in memory
 
 --> see first attempt at swap function
 
@@ -120,7 +139,8 @@ Call by reference
 
 /////////////////////////
 
-Write a printarray function using pointer notation
+Write a printarray function using pointer 
+    notation
 
 Swap two array values
 
@@ -132,7 +152,8 @@ Python tutor website with printarray/swap
 
 /////////////////////////
 
-Lab: user pointer notation to find the min element in an array
-and add 100 to it
+Lab: user pointer notation to find the 
+min element in an array and add 100 to it
 
-In your helper function, you should ONLY declare int* variables (no ints)
+In your helper function, you should 
+ONLY declare int* variables (no ints)
