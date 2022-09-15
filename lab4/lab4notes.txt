@@ -1,4 +1,5 @@
-Proj1 due Wed Sep 14
+Can turn in project 1 by midnight tonight for
+10% late penalty
 
 /////////////////////////
 
@@ -23,9 +24,11 @@ Gets the memory address of a variable
 
 int x = 4;
 
-&x
 
 How do we get the memory address of x?
+
+&x
+
 
 /////////////////////////
 
@@ -58,7 +61,6 @@ int* numPtr = &x;
 *numPtr = 5;
 (*numPtr)++;
 
-int y = *numPtr;
 
 /////////////////////////
 
@@ -80,13 +82,14 @@ numPtr = &x - 1;
 
 //the next lines are bad!
 
-numPtr = *x - 1; //get the value of memory 
-                //location 4 and subtract 1
+int x = 4;
+int* numPtr = &x;
 
-numPtr = x; //numPtr holds a 4 like it's
-            //a memory address
+numPtr = *x - 1; 
 
-*numPtr = 10; //put a 10 at memory location 4
+numPtr = x; 
+
+*numPtr = 10; 
 
 /////////////////////////
 
@@ -103,23 +106,24 @@ What is nums?
 
 
 int* arrPtr = &nums[0];     //what does this do?
+or: int* arrPtr = nums;
 
-arrPtr = nums;              //exactly the same
+arrPtr = &nums;              //this?
 
 arrPtr = &nums[1];          //this?
 
 arrPtr = nums + 4;          //this?
-//equiv: arrPtr = &nums[4];
+//equivalent? arrPtr = &(nums[4]);
 
 *arrPtr = 7;                //this?
 
 *(nums + 2) = 10;           //this?
-//equiv: nums[2] = 10;
+//equivalent? nums[2] = 10;
 
 arrPtr++;                   //this?
 
 nums++;                     //this?
-//NO! nums is a constant pointer
+    //error! nums is a constant pointer
 
 /////////////////////////
 

@@ -20,6 +20,7 @@ int main() {
     return 0;
 }
 
+//will this work?
 void swap(int* a, int* b) {
 	int temp = *a;
 	*a = *b;
@@ -27,10 +28,10 @@ void swap(int* a, int* b) {
 }
 
 void printarray(int* nums, int len) {
-    int* tempPtr = nums;
-    while (tempPtr < nums + len) {
-        printf("%d ", *tempPtr);
-        tempPtr++;
+    int* step = nums;
+    while (step < nums + len) {
+        printf("%d ", *step);
+        step++;
     }
 }
 
