@@ -1,0 +1,140 @@
+Project 2 posted, due Wed. Oct 12
+
+(if you didn't get Proj1 working in time...start earlier!)
+
+/////////////////////
+
+Today:
+
+- more with pointers
+- pointers to pointers
+- dynamic memory allocation
+
+/////////////////////
+
+Reminder:
+
+int x = 3;
+
+//how do we get a pointer to that spot in memory?
+
+//how do we change what is at that location?
+
+////////////////////
+
+Pointers to pointers
+
+A pointer can hold the memory address of another pointer
+
+
+//What does each step do?
+
+int x; 		
+
+int *xp; 	
+
+int **xpp; 	
+
+x = 36; 	
+
+xp = &x; 	
+
+*xp = 72; 	
+
+xpp = &xp; 	
+
+**xpp = 24;
+
+//(below this line is bad)
+
+*xpp = 7;
+
+**xp = 30;
+
+x = &xpp;
+
+xpp = xp;
+**xpp = 80;
+
+/////////////////////////
+
+Add compiler warnings
+
+gcc -Wall (filename)
+
+/////////////////////////
+
+All memory so far has been allocated on the STACK.
+
+Happens automatically when function is called.
+
+Deallocation is done automatically when function ends.
+
+Must be a constant size
+
+
+To allocate memory whose size might change, or that we don't
+know if we want until the program is running...allocate dynamically
+(on the HEAP).
+
+- malloc, calloc, realloc, free
+- not allocated contiguously
+- we must release this memory
+
+//////////////////////
+
+malloc - void* malloc(int numBytes)
+
+use sizeof(type) to get the number of bytes needed for a type
+
+cast the result to the type of pointer you want
+
+
+Example: dynamically allocate a size-10 array of ints
+
+
+//////////////////////
+
+free - void free(void* ptr)
+
+releases the memory allocated at ptr so it can be used again
+
+--> most implementation of malloc allocate a special spot
+    to store the size of the allocated block, so it knows how
+    much to free. This can be right before the allocated memory,
+    but is compiler specific
+
+
+Example: free array from before
+
+//////////////////////////
+
+calloc - void* calloc(int numElems, int sizePerElem);
+
+Same idea as malloc, but inits to default value for the type
+
+Need to free when done
+
+/////////////////////////
+
+realloc - void* realloc(void* origPtr, int newSize);
+
+- used to allocate more space for any existing pointer
+- returns one of:
+    - NULL (if not enough new space is found)
+    - The original pointer (if there is enough space at that location)
+    - A new pointer to a different spot in memory (releases old memory)
+
+
+double* test = (double*) calloc(2, sizeof(double));
+test = realloc(test, 10);
+
+--> what can go wrong with this example?
+
+/////////////////////
+
+Lab 5
+
+Merge function
+
+Idea
