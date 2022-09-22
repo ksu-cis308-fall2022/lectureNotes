@@ -12,9 +12,17 @@ Today:
 
 /////////////////////
 
-Pointers to pointers
+Pointers to pointers - holds the memory address of another pointer
 
-A pointer can hold the memory address of another pointer
+What does a pointer hold? the memory address of some other type
+
+
+ptr to a ptr to an int
+
+int** ptr
+
+
+What would a pointer to a pointer hold?
 
 
 //Example
@@ -28,17 +36,21 @@ int** xpp;
 x = 36; 	
 
 //Make xp "point to" x
+
 xp = &x;
 
+
 //Make xpp "point to" xp
+
 xpp = &xp;
 
 //Use xp to change x to 72
+
 *xp = 72;
 
 //Use xpp to change x to 24
-**xp = 24;
 
+**xpp = 24;
 
 /////////////////////////
 
@@ -72,12 +84,10 @@ store the result in type of pointer you want
 
 Example: dynamically allocate a size-10 array of ints
 
-int* arr = (int*)malloc(sizeof(int)*10);
-arr[0] = 10;
-*(arr+2) = 7;
+int* arr = malloc(10*sizeof(int));
+arr[2] = 7;
 
-arr++;
-free(arr);
+*(arr+2) = 7;
 
 //////////////////////
 
@@ -93,6 +103,14 @@ releases the memory allocated at ptr so it can be used again
 
 Example: free array from before
 
+arr++; //no! I lost the beginning of the chunk of memory
+free(arr);
+
+int nums[10];
+free(nums); //NO! (only to free memory on the heap)
+
+
+
 //////////////////////////
 
 calloc - void* calloc(int numElems, int sizePerElem);
@@ -103,7 +121,11 @@ Need to free when done
 
 //size 20 array of doubles initialized to 0
 
-double* vals = calloc(20, sizeof(double));
+double* example = calloc(20, sizeof(double));
+
+
+
+
 
 /////////////////////////
 
@@ -116,25 +138,28 @@ realloc - void* realloc(void* origPtr, int newSize);
     - A new pointer to a different spot in memory (releases old memory)
 
 
-double* test = (double*) calloc(2, sizeof(double));
-double* temp = realloc(test, 10);
 
+
+int* temp = realloc(arr, 20*sizeof(int));
 if (temp != NULL) {
-    test = temp;
+    arr = temp;
 }
 
---> what can go wrong with this example?
 
 /////////////////////
 
 How would we dynamically allocate space for a 3x4 array of ints?
 
-int** grid = malloc(sizeof(int*) * 3);
+int** grid = malloc(3*sizeof(int*));
+
+//loop to allocate each row
 for (int i = 0; i < 3; i++) {
-    grid[i] = malloc(sizeof(int) * 4);
+    grid[i] = malloc(4 * sizeof(int));
 }
 
-grid[0][2] = 17;
+grid[1][1] = 14;
+
+
 
 How would we free the memory?
 
@@ -142,6 +167,11 @@ for (int i = 0; i < 3; i++) {
     free(grid[i]);
 }
 free(grid);
+
+
+
+
+
 
 /////////////////////
 
