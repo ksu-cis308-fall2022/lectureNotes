@@ -1,4 +1,8 @@
 Project 2 due Wed Oct 12
+    - test on other input files (you create)
+
+Project 1 grades are in Canvas
+
 Exam 1 is Tues Oct 5
 
 ////////////////////////////////
@@ -74,55 +78,117 @@ int nums[8];
 
 1) Make "ptr" hold the address of the 2nd element in nums
 
+int* ptr = nums + 1;
+
+
+(int* ptr = &nums[1];)
+
 2) Use ptr to change the 3rd element in nums to be 11
+
+*(ptr+1) = 11;
+
 
 3) What do these do:
 
 *nums = 7;
-nums++;
+nums++; // not allowed - constant pointer
 
 4) Can we do:
 
-ptr[2] = 3;
+ptr[2] = 3;//same as: *(ptr + 2) = 3
+
 
 5) Make ptr point to val:
 
 int val = 7;
 
+ptr = &val;
+
+
 6) Use ptr to change val to 10
+
+*ptr = 10;
+
 
 7) Using only pointer notation, put the contents of val (10)
 in the last spot of nums
+
+*(nums+7) = *ptr; //or val
 
 ///////////////////////
 
 Write a function that takes a string and updates
 each lowercase letter to be capitalized
 
-(first with array notation, then pointer notation)
+void capitalize(char* str) {
+    for (int i = 0; i < strlen(str); i++) {
+        //do something with str[i]
+        //uppercase are 65-90
+        //lowercase are 97-122
+
+        int ascii = (int)str[i];
+        if (ascii >= 97 && ascii <= 122) {
+            ascii -= 32;
+            str[i] = (char)ascii;
+        }
+    }
+}
+
 
 //////////////////////
 
 Write a code fragment that gets a word from user input,
 calls your function to capitalize it, and prints the result
 
+printf("Enter a word: ");
+char word[30];
+fgets(buffer, 30, stdin);
+capitalize(word);
+printf("%s\n", word);
+
+
 /////////////////////
 
 Dynamically allocate an array of 20 ints.
 
+int* arr = malloc(20*sizeof(int));
+
 Assume the array has been filled - use ptr notation to print
 the odd elements.
 
+int* temp = arr;
+while (temp < arr + 20) {
+    if (*temp % 2 == 1) {
+        printf("%d\n", *temp);
+    }
+    temp++;
+}
+
+
+
 Free the memory.
+
+free(arr);
+
 
 /////////////////////
 
-GDB debugger
+GDB debugger (see list of commands in textbook)
 
 Example 1: finding error in factorial program
 
-Example 2: detecting segmentation fault
+Example 2: locating segmentation fault
 
-Example 3: infinite recursion
+Example 3: work with pointers
 
+////////////////
 
+Lab 6
+
+using gdb debugger
+
+if not installed, use lab machines
+
+need to save on U: drive, ssh into linux server
+
+what should the lab do when it is finished?

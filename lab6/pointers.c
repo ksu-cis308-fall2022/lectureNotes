@@ -10,9 +10,9 @@ int main() {
 }
 
 void printarray(int* nums, int len) {
-    int* ptr = &nums;
+    int* ptr = nums;
     while (ptr < nums + len) {
-        printf("%d\n", ptr);
-        ptr = *ptr + 1;
+        printf("%d\n", *ptr);
+        ptr = ptr + 1;
     }
 }

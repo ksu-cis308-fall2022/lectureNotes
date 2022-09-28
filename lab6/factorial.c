@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 int main() {
-    int prod = 0;
+    int prod = 1;
 
-    for (int i = 1; i < 5; i++) {
+    for (int i = 1; i <= 5; i++) {
         prod = prod * i;
     }
 
