@@ -3,14 +3,7 @@ Project 2 due Wed Oct 12
 
 Project 1 grades are in Canvas
 
-Exam 1 is Tues Oct 5
-
-////////////////////////////////
-
-Today:
-Quick review for exam
-gdb debugger
-Lab 6
+Exam 1 is Thurs Oct 6
 
 ///////////////////////////////
 
@@ -78,98 +71,76 @@ int nums[8];
 
 1) Make "ptr" hold the address of the 2nd element in nums
 
-int* ptr = nums + 1;
-
-
-(int* ptr = &nums[1];)
+int* ptr = nums+1; // &nums[1];
 
 2) Use ptr to change the 3rd element in nums to be 11
 
-*(ptr+1) = 11;
-
+*ptr = 11;
 
 3) What do these do:
 
 *nums = 7;
-nums++; // not allowed - constant pointer
+nums++; //NO! Constant pointer.
 
 4) Can we do:
 
-ptr[2] = 3;//same as: *(ptr + 2) = 3
-
+ptr[2] = 3; //turns into *(ptr+2) = 3
 
 5) Make ptr point to val:
 
 int val = 7;
-
 ptr = &val;
-
 
 6) Use ptr to change val to 10
 
 *ptr = 10;
 
-
 7) Using only pointer notation, put the contents of val (10)
 in the last spot of nums
 
-*(nums+7) = *ptr; //or val
+*(nums+7) = *ptr;
 
 ///////////////////////
 
-Write a function that takes a string and updates
-each lowercase letter to be capitalized
+Write a function that takes a string and two characters
+Replace every instance of the first character with the second character
 
-void capitalize(char* str) {
-    for (int i = 0; i < strlen(str); i++) {
-        //do something with str[i]
-        //uppercase are 65-90
-        //lowercase are 97-122
+(first with array notation, then pointer notation)
 
-        int ascii = (int)str[i];
-        if (ascii >= 97 && ascii <= 122) {
-            ascii -= 32;
-            str[i] = (char)ascii;
+void replacechar(char* str, char find, char replace) {
+    int len = strlen(str);
+    char* cur = str;
+    while (cur < str + len) {
+        if(*cur == find) {
+            *cur = replace;
         }
+        cur++;
     }
 }
-
 
 //////////////////////
 
 Write a code fragment that gets a word from user input,
-calls your function to capitalize it, and prints the result
+calls your function to replace each 'a' with a '*', and prints the result
 
+char input[20];
 printf("Enter a word: ");
-char word[30];
-fgets(buffer, 30, stdin);
-capitalize(word);
-printf("%s\n", word);
-
+fgets(input,20,stdin);
+replacechar(input, 'a', '*');
+printf("%s\n", input);
 
 /////////////////////
 
 Dynamically allocate an array of 20 ints.
 
-int* arr = malloc(20*sizeof(int));
+int* array = malloc(20*sizeof(int));
 
 Assume the array has been filled - use ptr notation to print
 the odd elements.
 
-int* temp = arr;
-while (temp < arr + 20) {
-    if (*temp % 2 == 1) {
-        printf("%d\n", *temp);
-    }
-    temp++;
-}
-
-
-
 Free the memory.
 
-free(arr);
-
+free(array);
 
 /////////////////////
 
