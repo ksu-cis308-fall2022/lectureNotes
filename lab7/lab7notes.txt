@@ -1,0 +1,99 @@
+Project 2 due Wed Oct 12
+    - test on other input files (you create)
+
+Exam 1 grades are in Canvas
+
+///////////////////////////
+
+Exam 1 statistics.
+
+High: 49/50
+Average: 38/50
+
+A (45-50): 12 students
+B (40-44): 11 students
+C (35-39): 12 students
+D (30-34): 6 students
+F (below 30): 5 students
+
+Work through exam.
+
+/////////////////////////
+
+Structs in C - similar idea as structs in C#
+
+contains fields for a new type
+
+struct name {
+    type field1;
+    type field2;
+    ...
+} (optional objList);
+
+
+Example:
+
+struct person {
+    char name[30];
+    int age;
+};
+
+////////////////////
+
+Declaring struct variables:
+
+struct name varName;
+
+
+Example:
+
+struct person p1;
+
+
+What happens?
+- allocated on the STACK
+- space is allocated for each field
+
+
+
+
+Initializing fields:
+
+varName.fieldName
+
+
+
+
+How would we make p1 hold the info: Bob, age 20?
+
+
+
+(what do we do with the string field?)
+
+///////////////////////////////
+
+Structs and functions
+
+see structs.c - printperson and birthday functions
+
+
+
+--> how could we get name and age as user inputs instead?
+
+///////////////////////
+
+(Constant-sized) arrays of structs
+
+type name[constantSize];
+
+
+struct person people[10];
+
+
+
+(Variable-sized) arrays of structs
+
+
+////////////////////////////
+
+Lab 7 - fractions
