@@ -66,6 +66,10 @@ varName.fieldName
 
 How would we make p1 hold the info: Bob, age 20?
 
+struct person p1;
+p1.age = 20;
+strcpy(p1.name, "Bob");
+
 
 
 (what do we do with the string field?)
@@ -88,6 +92,8 @@ type name[constantSize];
 
 
 struct person people[10];
+
+people[0].age
 
 
 
