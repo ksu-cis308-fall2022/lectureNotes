@@ -1,0 +1,61 @@
+Project 3 is posted - due Wed Nov 9
+
+This project is a bit more involved
+    - Involves Makefiles (test now to make sure this works)
+
+General idea: shortest path between two words
+
+
+fit
+cat
+fat
+rat
+sit
+car
+
+Draw as a graph
+
+Shortest "path" from fit to car?
+
+Will use breadth-first search
+
+
+///////////////////////////////
+
+Review: person struct example (structs.c)
+
+What was the downside to how the parameters were passed?
+
+What is a better solution?
+
+///////////////////////////////
+
+--> usually we want to work with pointers to structs instead
+
+--> this makes struct pointers work like objects in Java/C#
+
+///////////////////////////////
+
+Example: linked lists (of ints)
+
+define a struct:
+
+
+--> complete linked list program
+
+//////////////////////////////
+
+typedef: rename struct type
+
+downside to having head be global?
+
+other solution: pass a pointer
+
+//////////////////////////////
+
+Lab 8: implement a stack
+
+use the stack to reverse the letters in a word
+
+algorithm?
+
