@@ -3,24 +3,10 @@ Project 3 is posted - due Wed Nov 9
 This project is a bit more involved
     - Involves Makefiles (test now to make sure this works)
 
-General idea: shortest path between two words
+--> new guide in text on remote access using VS Code
+    (can use this if can't use gdb/make from your own machine)
 
-
-fit
-cat
-fat
-rat
-sit
-car
-
-Draw as a graph
-
-Shortest "path" from fit to car?
-
-Will use breadth-first search
-
-
-///////////////////////////////
+/////////////////////////////////
 
 Review: person struct example (structs.c)
 
@@ -40,12 +26,17 @@ Example: linked lists (of ints)
 
 define a struct:
 
+typedef struct node {
+    int data;
+    struct node* next;
+} NODE;
+
+
+typedef: rename struct type
 
 --> complete linked list program
 
 //////////////////////////////
-
-typedef: rename struct type
 
 downside to having head be global?
 

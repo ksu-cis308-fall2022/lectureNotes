@@ -6,9 +6,9 @@ struct person {
     int age;
 };
 
-void printperson(struct person p);
+void printperson(struct person* p);
 
-struct person birthday(struct person p);
+void birthday(struct person* p);
 
 int main() {
     struct person p1;
@@ -16,18 +16,18 @@ int main() {
     p1.age = 20;
 
     //print p1, make p1 have a birthday, print p1 again;
-    printperson(p1);
-    p1 = birthday(p1);
-    printperson(p1);
+    printperson(&p1);
+    birthday(&p1);
+    printperson(&p1);
     return 0;
 }
 
-void printperson(struct person p) {
+void printperson(struct person* p) {
     //print p's name and age
-    printf("Name: %s, age: %d\n", p.name, p.age);
+    printf("Name: %s, age: %d\n", p->name, p->age);
 }
 
-struct person birthday(struct person p) {
+void birthday(struct person* p) {
     //make p be one year older
-    p.age++;
-    return p;
+    p->age++;
+}
