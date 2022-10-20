@@ -32,6 +32,9 @@ typedef struct node {
 } NODE;
 
 
+
+
+
 typedef: rename struct type
 
 --> complete linked list program

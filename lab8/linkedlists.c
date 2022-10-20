@@ -6,24 +6,22 @@ typedef struct node {
     struct node* next;
 } NODE;
 
-void add(int elem, NODE** headptr);
+void add(int elem, NODE** head);
 
 void printlist(NODE* head);
 
 void releasemem(NODE* head);
 
 int main() {
-    NODE* head = NULL;
+    NODE* front = NULL;
 
     //add 1-4
     //print it
-
     for (int i = 1; i <= 4; i++) {
-        add(i, &head);
+        add(i, &front);
     }
-
-    printlist(head);
-    releasemem(head);
+    printlist(front);
+    releasemem(front);
 
     return 0;
 }
@@ -34,6 +32,7 @@ void add(int elem, NODE** headptr) {
     newnode->data = elem;
     newnode->next = NULL;
 
+    //is the list empty?
     if (*headptr == NULL) {
         *headptr = newnode;
     }
@@ -42,13 +41,16 @@ void add(int elem, NODE** headptr) {
         while (temp->next != NULL) {
             temp = temp->next;
         }
+
         //temp is the last node
         temp->next = newnode;
     }
+
+    //need to find the end
 }
 
 void printlist(NODE* head) {
-    //print head's list
+    //print all data in my head linked list 
     NODE* temp = head;
     while (temp != NULL) {
         printf("%d\n", temp->data);
@@ -60,8 +62,8 @@ void releasemem(NODE* head) {
     //release all memory in the list
     NODE* temp = head;
     while (temp != NULL) {
-        NODE* after = temp->next;
+        NODE* next = temp->next;
         free(temp);
-        temp = after;
+        temp = next;
     }
 }
