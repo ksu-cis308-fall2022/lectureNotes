@@ -1,0 +1,150 @@
+Project 3 is posted - due Wed Nov 9
+
+This project is a bit more involved
+    - Involves Makefiles (test now to make sure this works)
+    - See Discord for discussion on reading input file,
+        storing words
+
+--> new guide in text on remote access using VS Code
+    (can use this if can't use gdb/make from your own machine)
+
+/////////////////////////////////
+
+Multiple files
+
+- Can reuse (include) functions and types that are defined
+    in a header file (.h) and implemented in a corresponding
+    code file (.c)
+
+- Usually, the .c file with your main function will NOT have a .h file
+    (if it does, "main" isn't included as a prototype)
+
+- If you are referring to types / implementing functions /
+    calling functions that are defined elsewhere, do:
+
+#include "name.h"
+
+At the top of the file (will look in your working directory).
+
+////////////////////////////////
+
+Creating a header file
+
+- Saved as .h
+
+#ifndef NAME_H
+#define NAME_H
+
+//contents of file
+
+//define types (structs, etc.)
+//define function prototypes
+
+#endif
+
+////////////////////////
+
+Implementing a .c file corresponding to a .h file:
+
+#include "name.h"
+
+//implement all the function prototypes from name.h
+
+////////////////////////
+
+Example:
+
+types.h
+    - define a node for holding int data in a linked structure
+
+stack.h plus stack.c
+    - define and implement stack (push/pop) with int data
+    - similar to Lab 8
+
+linkedlist.h plus linkedlist.c
+    - define and implement add, printlist, releasemem for linked list
+    - similar to last week's example
+
+lab9example.c (contains main function)
+    - push 1-10 onto stack, pop and print
+    - add 1-4 to linked list, print list, release memory
+
+///////////////////////
+
+Building programs with multiple files
+
+- need to separately compile each code file into an object file
+- then link together object files into an executable
+
+For each code (.c) file:
+
+    gcc -c name.c
+
+--> will produce object file name.o
+
+
+Link all object files together:
+
+    gcc name1.o name2.o (etc.)
+
+Will produce executable a.exe (a.out)
+
+
+--> try it on data structures example
+
+
+//////////////////////////////
+
+Makefiles
+
+--> it is a pain to separate compile everything and link it together
+
+--> Makefiles summarize build commands so you can do everything with:
+
+make
+
+--> can also specify how to "clean" project (remove .o, .exe files)
+
+
+--> save under name "Makefile" (no extension)
+
+--> need make.exe installed, available on path variable
+
+///////////////////////
+
+Makefile template (list headers, code, target name):
+
+CC = gcc
+CFLAGS = -g -Wall
+EXE = exename
+HEADERS = (list all the .h files)
+CODE = (list all the .c files)
+
+OBJECTS = $(CODE:.c=.o)
+
+target: $(OBJECTS) $(HEADERS)
+    $(CC) $(CFLAGS) $(OBJECTS) –o $(EXE)
+
+clean:
+    rm -f *.o *.exe *.out
+
+/////////////////////
+
+Example: Makefile for data structures example
+
+/////////////////////
+
+Lab 9: sort an input file of words by length, using a queue
+    --> assume all word lengths are < 30 letters
+
+types.h: defines WORD (a struct to wrap a string) and NODE 
+    (a struct with WORD* data)
+
+- queue.h - you write whole thing. ifndef block, prototypes
+- queue.c - you write enqueue. similar to push (stack) and
+    add (linked list)
+- lab9.c - finish main function
+    contains two size-30 arrays to help represent 30 queues
+        head_length and tail_length
+    head_length[2] is the NODE* head of the queue of words with length 2
+    tail_length[2] is the NODE* tail of the queue of words with length 2
