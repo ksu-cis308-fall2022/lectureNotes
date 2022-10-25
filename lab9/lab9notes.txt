@@ -162,3 +162,8 @@ void enqueue(WORD* w, NODE** headptr, NODE** tailptr)
 
 
 How would we enqueue a word for "ball"?
+
+WORD* w = malloc(sizeof(WORD));
+strcpy(w->str, "ball");
+
+enqueue(w, &head_length[4], &tail_length[4]);
