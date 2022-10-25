@@ -140,6 +140,11 @@ Lab 9: sort an input file of words by length, using a queue
 types.h: defines WORD (a struct to wrap a string) and NODE 
     (a struct with WORD* data)
 
+
+    typedef struct {
+        char str[30];
+    } WORD;
+
 - queue.h - you write whole thing. ifndef block, prototypes
 - queue.c - you write enqueue. similar to push (stack) and
     add (linked list)
@@ -148,3 +153,12 @@ types.h: defines WORD (a struct to wrap a string) and NODE
         head_length and tail_length
     head_length[2] is the NODE* head of the queue of words with length 2
     tail_length[2] is the NODE* tail of the queue of words with length 2
+
+
+
+So if we have:
+
+void enqueue(WORD* w, NODE** headptr, NODE** tailptr)
+
+
+How would we enqueue a word for "ball"?
