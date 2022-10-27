@@ -1,7 +1,9 @@
-#ifndef LIST_H
-#define LIST_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 
 #include "types.h"
+
+//linked list prototypes
 
 void add(int elem, NODE** head);
 

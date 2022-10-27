@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -g -Wall
 EXE = lab9test
-HEADERS = types.h stack.h linkedlist.h
-CODE = stack.c linkedlist.c lab9Example.c
+HEADERS = types.h linkedlist.h stack.h
+CODE = linkedlist.c stack.c lab9Example.c
 
 OBJECTS = $(CODE:.c=.o)
 

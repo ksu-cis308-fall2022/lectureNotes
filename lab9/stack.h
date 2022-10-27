@@ -3,10 +3,8 @@
 
 #include "types.h"
 
-//contents of file
-
-//define types (structs, etc.)
-//define function prototypes
+//stack function prototypes
+//(need to change to work with ints)
 
 void push(int c, NODE** topPtr);
 

@@ -19,6 +19,9 @@ Multiple files
 - Usually, the .c file with your main function will NOT have a .h file
     (if it does, "main" isn't included as a prototype)
 
+- Sometimes you might have a header file with just type definitions
+    --> don't need a corresponding .c file in this case
+
 - If you are referring to types / implementing functions /
     calling functions that are defined elsewhere, do:
 
@@ -52,7 +55,7 @@ Implementing a .c file corresponding to a .h file:
 
 ////////////////////////
 
-Example:
+Example: program that uses a stack and a linked list
 
 types.h
     - define a node for holding int data in a linked structure
@@ -123,7 +126,7 @@ CODE = (list all the .c files)
 OBJECTS = $(CODE:.c=.o)
 
 target: $(OBJECTS) $(HEADERS)
-    $(CC) $(CFLAGS) $(OBJECTS) –o $(EXE)
+    $(CC) $(CFLAGS) $(OBJECTS) -o $(EXE)
 
 clean:
     rm -f *.o *.exe *.out
@@ -136,6 +139,10 @@ Example: Makefile for data structures example
 
 Lab 9: sort an input file of words by length, using a queue
     --> assume all word lengths are < 30 letters
+
+
+How does a queue work? How would we write enqueue?
+
 
 types.h: defines WORD (a struct to wrap a string) and NODE 
     (a struct with WORD* data)
@@ -158,12 +165,16 @@ types.h: defines WORD (a struct to wrap a string) and NODE
 
 So if we have:
 
+    typedef struct {
+        char str[30];
+    } WORD;
+
 void enqueue(WORD* w, NODE** headptr, NODE** tailptr)
 
 
 How would we enqueue a word for "ball"?
 
-WORD* w = malloc(sizeof(WORD));
-strcpy(w->str, "ball");
+WORD* newword = malloc(sizeof(WORD));
+strcpy(newword->str, "ball");
+enqueue(newword, &head_length[4], &tail_length[4]);
 
-enqueue(w, &head_length[4], &tail_length[4]);

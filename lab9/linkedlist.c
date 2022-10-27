@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+//linked list implementations
+
 void add(int elem, NODE** headptr) {
     //add new node with elem to end of head's list
     NODE* newnode = malloc(sizeof(NODE));

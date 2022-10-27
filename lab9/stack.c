@@ -2,6 +2,9 @@
 #include "stack.h"
 #include <stdlib.h>
 
+//stack function implementations
+//(need to change to work with ints)
+
 void push(int c, NODE** topPtr) {
     NODE* newnode = malloc(sizeof(NODE));
     newnode->data = c;
