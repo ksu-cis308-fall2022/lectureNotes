@@ -1,0 +1,323 @@
+Project 3 - due Wed Nov 9
+
+Lab 9 - can still get it checked off during lab
+    I'll post solution after class
+
+//////////////////////////////
+
+User-defined types:
+
+1) structs
+2) typedef
+3) enum
+4) union
+
+//////////////////////////////
+
+typedef -- we've done things like:
+
+typedef struct {
+    char name[30];
+    int age;
+} PERSON;
+
+And:
+
+typedef struct node {
+    int data;
+    struct node* next;
+} NODE;
+
+
+--> why do we name the struct for node but not person?
+
+/////////////////////////
+
+Can use typedef to rename ANY type.
+
+typedef oldTypeName newTypeName;
+
+
+
+
+Example:
+
+typedef char GRADE;
+
+
+GRADE g = 'A';
+
+
+////////////////////////
+
+Enum - like enum in C#
+
+
+enum name {val1, val2, ...};
+
+    //Or:     enum name {val1, val2, ...} optionalObjList; 
+
+
+
+
+Example:
+
+typedef enum {red, green, blue} COLOR;
+
+COLOR house = red;
+
+
+
+And can use enum values in an if-statement:
+
+if (house == red) {
+    //do something
+}
+
+//////////////////////
+
+Typedef with enum.
+
+Can also do:
+
+    typedef enum color COLOR;
+
+
+
+Or all at once:
+
+    typedef enum {red, green, blue} COLOR;
+
+
+
+Now can have:
+
+    COLOR book_color;
+
+//////////////////////
+
+How enums are stored.
+
+- creates integer constants for each value (starting at 0)
+
+
+If I have:
+
+    typedef enum {red, green, blue} COLOR;
+    COLOR book_color = red;
+
+
+Last line is equivalent to:
+
+    COLOR book_color = 0;
+
+Can use the enum values and the ints interchangeably (but please don't...)
+
+////////////////////////
+
+typedef enum {red, pink, yellow} APPLE_COLORS;
+    //NO! We've already used the red value.
+
+
+Can't use same enum value (like red) in two different enums
+
+
+WILL let you do something like:
+
+    typedef enum {one, two, three} NUMS;
+
+    typedef enum {first, second, third} NUMS2;
+
+    NUMS n = one;
+    n = second;
+
+////////////////////////
+
+Specifying enum int values:
+
+typedef enum {freshman = 9, sophomore, junior, senior} YEAR;
+
+
+////////////////////////
+
+How could we use enum to create a BOOL type?
+
+typedef enum {false, true} BOOL;
+
+BOOL flag = false;
+
+if (flag == true) {
+
+}
+
+
+///////////////////////
+
+Printing enum - can print as an int, %d
+
+Would need an if/switch to look at value and manually print text
+
+COLOR ex = red;
+
+if (ex == red) {
+    printf("red\n");
+}
+//etc. for different values
+
+///////////////////////
+
+Unions 
+
+- a construct that can hold one of several types
+- definition looks like a struct, but only ONE type is stored at a time
+
+
+Syntax:
+
+union name {
+    type1 name1;
+    type2 name2;
+    ...
+} optionalObjList;
+
+
+When we create a union, we can store ONE of its fields.
+
+The sizeof a union is the size of its biggest field --
+    all fields occupy the same spot in memory
+
+////////////////////
+
+Example:
+
+typedef union {
+    double dollars;
+    int yen;
+} MONEY;
+
+MONEY m;
+m.dollars = 4.20;
+
+--> can print m.dollars now as a %lf
+--> m.yen as %d will be corrupted
+
+If we then do:
+
+m.yen = 17;
+
+--> can print m.yen now as %d
+--> m.dollars will be corrupted (sometimes...old information
+        might still be there if new value isn't taking up
+        as much of the space)
+
+
+--> there is no way to tell which field is set -- you need to keep track
+
+--> most common approach: use a corresponding enum
+
+
+//////////////////////////
+
+Union and typedef:
+
+typedef union {
+    double dollars;
+    int yen;
+} MONEY;
+
+
+//////////////////////////
+
+Combining user-defined types.
+
+Make a PERSON struct.
+
+All people have a name and an age
+A person can be either: (<-- union of structs)
+    - a student (with a GPA and a major)
+    - an employee (with a division and a years worked)
+Also want to keep track of whether person is student or employee
+
+
+Write struct here:
+
+typedef struct {
+    char name[30];
+    int age;
+    union {
+        struct {
+            double gpa;
+            char major[50];
+        } studentinfo;
+        struct {
+            char division[50];
+            int years;
+        } empinfo;
+    } persontype;
+    enum {student, employee} typestored;
+} PERSON;
+
+
+
+
+
+Create a pointer to a struct variable with the following information:
+
+PERSON* pers = malloc(sizeof(PERSON));
+strcpy(pers->name, "Bob Jones");
+pers->age = 18;
+pers->typestored = student;
+strcpy(pers->persontype.studentinfo.major, "ECE");
+pers->persontype.studentinfo.gpa = 3.2;
+
+Name: Bob Jones
+Student
+Age: 18
+Major: ECE
+GPA: 3.2
+
+
+
+
+PERSON* pers - what do I print?
+
+if (pers->typestored == student) {
+    //print all student info
+}
+
+///////////////////////
+
+Look at Lab 10.
+
+pet.h, pet.c, lab10.C
+
+- define a struct representing a pet that can be either a cat or dog
+
+
+- complete these functions:
+
+PET* init_cat(char* n, CAT_HAIR h, CAT_ENV en);
+
+PET* init_dog(char* n, char* b, BOOL pure);
+
+void print_pet(PET* p);
+
+
+- in main (lab10.c), create 4 PET* and store them in an array.
+
+//////////////////////////
+
+make clean had issues on lab machines
+
+    --> labs don't recognize rm *.o *.exe
+
+If you have errors with make clean, change it to be:
+
+clean:
+    del *.o *.exe
+
+
+
+
+
+
