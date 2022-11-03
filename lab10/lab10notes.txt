@@ -1,8 +1,5 @@
 Project 3 - due Wed Nov 9
 
-Lab 9 - can still get it checked off during lab
-    I'll post solution after class
-
 //////////////////////////////
 
 User-defined types:
@@ -44,8 +41,12 @@ Example:
 
 typedef char GRADE;
 
-
 GRADE g = 'A';
+
+char letter = 'B';
+
+g = letter;
+
 
 
 ////////////////////////
@@ -60,11 +61,13 @@ enum name {val1, val2, ...};
 
 
 
-Example:
+Examples:
 
-typedef enum {red, green, blue} COLOR;
+    enum medals {gold, silver, bronze};
+    enum medals track = gold;
 
-COLOR house = red;
+    typedef enum {red, green, blue} COLOR;
+    COLOR house = red;
 
 
 
@@ -76,25 +79,6 @@ if (house == red) {
 
 //////////////////////
 
-Typedef with enum.
-
-Can also do:
-
-    typedef enum color COLOR;
-
-
-
-Or all at once:
-
-    typedef enum {red, green, blue} COLOR;
-
-
-
-Now can have:
-
-    COLOR book_color;
-
-//////////////////////
 
 How enums are stored.
 
@@ -115,12 +99,18 @@ Can use the enum values and the ints interchangeably (but please don't...)
 
 ////////////////////////
 
-typedef enum {red, pink, yellow} APPLE_COLORS;
-    //NO! We've already used the red value.
+If we have:
+
+    typedef enum {red, green, blue} COLOR;
+
+Can we do?
+
+    typedef enum {red, pink, yellow} APPLE_COLORS;
 
 
 Can't use same enum value (like red) in two different enums
 
+///////////////////////
 
 WILL let you do something like:
 
@@ -129,7 +119,12 @@ WILL let you do something like:
     typedef enum {first, second, third} NUMS2;
 
     NUMS n = one;
-    n = second;
+    n = second; //really just setting n to 1
+
+    if (n == two) {
+        //would be true
+
+    }
 
 ////////////////////////
 
@@ -146,23 +141,20 @@ typedef enum {false, true} BOOL;
 
 BOOL flag = false;
 
-if (flag == true) {
-
-}
-
-
 ///////////////////////
 
 Printing enum - can print as an int, %d
 
 Would need an if/switch to look at value and manually print text
 
+typedef enum {red, green, blue} COLOR;
 COLOR ex = red;
 
+//how to print ex?
+//if-statement for all values, print text yourself
 if (ex == red) {
-    printf("red\n");
+    printf("red");
 }
-//etc. for different values
 
 ///////////////////////
 
@@ -233,13 +225,10 @@ Combining user-defined types.
 Make a PERSON struct.
 
 All people have a name and an age
-A person can be either: (<-- union of structs)
+A person can be either: union
     - a student (with a GPA and a major)
     - an employee (with a division and a years worked)
 Also want to keep track of whether person is student or employee
-
-
-Write struct here:
 
 typedef struct {
     char name[30];
@@ -254,35 +243,31 @@ typedef struct {
             int years;
         } empinfo;
     } persontype;
-    enum {student, employee} typestored;
+    enum {studenttype, emptype} typestored;
 } PERSON;
 
 
-
-
-
-Create a pointer to a struct variable with the following information:
+Bob Jones, age 20
+student
+ECE, 3.2
 
 PERSON* pers = malloc(sizeof(PERSON));
+pers->age = 20;
 strcpy(pers->name, "Bob Jones");
-pers->age = 18;
-pers->typestored = student;
-strcpy(pers->persontype.studentinfo.major, "ECE");
+pers->typestored = studenttype;
 pers->persontype.studentinfo.gpa = 3.2;
-
-Name: Bob Jones
-Student
-Age: 18
-Major: ECE
-GPA: 3.2
-
+strcpy(pers->persontype.studentinfo.major, "ECE");
 
 
 
 PERSON* pers - what do I print?
 
-if (pers->typestored == student) {
-    //print all student info
+if (pers->typestored == studenttype) {
+    //if I want to print an enum, must use a conditional
+    //and manually print the text
+}
+else {
+
 }
 
 ///////////////////////
