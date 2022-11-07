@@ -1,0 +1,190 @@
+Project 3 - due Wed Nov 9
+
+Project 4 is visible (will announce soon)
+    due Wed Dec 7
+
+Regular lab next week, before fall break
+
+Exam 2 is the week after fall break
+    Tues Nov 29
+
+Regular lab the last week of the semester
+
+Optional final Friday of finals week
+
+/////////////////////////
+
+Preprocessor directives.
+
+Begin with a #
+
+The preprocessor runs before the compiler and processes the # lines
+
+It may add, remove, or change the code before the compiler sees it
+
+//////////////////////////
+
+#include <libraryfile.h>
+#include "yourfile.h"
+
+Preprocessor will replace that line with the contents of the 
+included file.
+
+When the compiler sees the code, ALL function prototypes and type
+definitions will be listed in the file.
+
+
+<> - tells preprocessor to look in the standard include directory
+"" - tells preprocessor to look in the current directory
+    (or in the directories included in the build information)
+
+/////////////////////////
+
+#define - creating constants 
+
+    #define name value
+
+Preprocessor will replace all instances of "name"
+with "value"...BEFORE the compiler sees the code.
+
+
+--> Good way to define the size of a constant-sized array
+
+#define SIZE 10
+
+...
+
+int nums[SIZE];
+
+--> what happends before the compiler sees the code?
+
+/////////////////////////
+
+#define - creating macros (simplified function)
+
+Example:
+
+#define SUM(a, b) a + b
+
+
+
+We can use like:
+
+int result = SUM(4, 5);
+double val = SUM(3.2, 6.7);
+
+--> what does the preprocessor do with those lines?
+
+--> what if we did:
+
+char c = SUM(pet1, pet2);
+
+Where pet1 and pet2 were objects of type PET?
+
+/////////////////////////
+
+Ternary conditional operator:
+
+
+condition ? value if true : value if false
+
+////////////////////////
+
+More macros:
+
+#define MAX(x, y)
+
+
+#define FLUSH()
+
+
+#define DIFF_SQUARE(x, y) x*x - y*y
+
+
+What if we do:
+
+int diff = DIFF_SQUARE(3-2, 4-2);
+
+/////////////////////////
+
+Why macros sometimes instead of functions?
+
+- no function call (saves stack space)
+- a little faster execution
+
+
+Why functions instead of macros?
+- macros don't do type checking
+- macros can be difficult to debug
+- while there is a way to make them more than one line,
+    doing so is clunky and harder to read
+
+/////////////////////////
+
+#ifndef someConstant
+
+section of code
+
+#endif
+
+
+
+--> if someConstant is not defined, we will keep that section of code
+    for the compiler
+
+
+--> if someConstant is defined, that section of code will be
+    removed before the compiler sees it
+
+
+Very good for creating header files:
+
+#ifndef SOME_CONSTANT
+#define SOME_CONSTANT
+
+header file contents
+
+#endif
+
+
+What if above file was test.h, and elsewhere if we did:
+
+#include "test.h"
+#include "test.h"
+
+
+--> what if test2.h includes test1.h, and 
+    another file includes both test1.h and test2.h
+
+////////////////////////
+
+#ifdef ... #endif
+
+--> same idea, but ... code is only included if 
+a constant HAS already been defined.
+
+
+Maybe we have:
+
+#define SIZE 10
+
+
+Then elsewhere we could do:
+
+#ifdef SIZE
+
+int nums[SIZE];
+...
+
+#endif
+
+
+//////////////////////////
+
+Lab 11
+
+Writing macros
+
+Using same header file (from different directory) in multiple projects
+
+Defining a different path for includes in a Makefile
