@@ -4,7 +4,7 @@ void printarray(int* nums, int len);
 
 int main() {
     int test[] = {1,2,3,4,5};
-    printarray(test, sizeof(test));
+    printarray(test, sizeof(test)/sizeof(int));
 
     return 0;
 }

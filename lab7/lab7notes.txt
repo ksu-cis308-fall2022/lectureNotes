@@ -1,5 +1,6 @@
-Project 2 due Wed Oct 12
-    - test on other input files (you create)
+Project 2 due yesterday, turn in by midnight for 10% off
+
+Project 3 posted, due Wednesday, November 9
 
 Exam 1 grades are in Canvas
 
@@ -67,9 +68,9 @@ varName.fieldName
 How would we make p1 hold the info: Bob, age 20?
 
 struct person p1;
+
 p1.age = 20;
 strcpy(p1.name, "Bob");
-
 
 
 (what do we do with the string field?)
@@ -93,9 +94,10 @@ type name[constantSize];
 
 struct person people[10];
 
-people[0].age
 
+How to set the first person's age to 30?
 
+people[0].age = 30;
 
 (Variable-sized) arrays of structs
 
@@ -103,3 +105,4 @@ people[0].age
 ////////////////////////////
 
 Lab 7 - fractions
+

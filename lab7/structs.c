@@ -15,14 +15,10 @@ int main() {
     strcpy(p1.name, "Bob");
     p1.age = 20;
 
-    //how could we get name/age as user inputs?
-
     //print p1, make p1 have a birthday, print p1 again;
-
     printperson(p1);
     p1 = birthday(p1);
     printperson(p1);
-
     return 0;
 }
 

@@ -1,12 +1,11 @@
-Project 3 - due Wed Nov 9
+Project 3 - can turn it with late penalty until midnight
 
-Project 4 is visible (will announce soon)
-    due Wed Dec 7
+Project 4 due Wed Dec 7
 
 Regular lab next week, before fall break
 
 Exam 2 is the week after fall break
-    Tues Nov 29
+    Thurs Dec 1
 
 Regular lab the last week of the semester
 
@@ -56,9 +55,10 @@ with "value"...BEFORE the compiler sees the code.
 
 int nums[SIZE];
 
---> what happends before the compiler sees the code?
+--> what happens before the compiler sees the code?
 
 int nums[10];
+
 
 /////////////////////////
 
@@ -73,17 +73,28 @@ Example:
 We can use like:
 
 int result = SUM(4, 5);
+
+    becomes:
     int result = 4 + 5;
 
+
 double val = SUM(3.2, 6.7);
+
+    becomes:
+
     double val = 3.2 + 6.7;
 
 --> what does the preprocessor do with those lines?
+
+
+
+
 
 --> what if we did:
 
 char c = SUM(pet1, pet2);
     char c = pet1 + pet2;
+
 
 Where pet1 and pet2 were objects of type PET?
 
@@ -105,14 +116,12 @@ More macros:
 
 #define MAX(x, y) x > y ? x : y
 
-    int big = MAX(3, 4);
 
-    int big = 3 > 4 ? 3 : 4;
 
 
 #define FLUSH() while (getchar() != '\n')
 
-FLUSH();
+
 
 
 #define DIFF_SQUARE(x, y) ((x)*(x) - (y)*(y))
@@ -123,6 +132,8 @@ What if we do:
 int diff = DIFF_SQUARE(3-2, 4-2);
 
 int diff = 3-2*3-2 - 4-2*4-2;
+
+
 
 /////////////////////////
 
@@ -143,11 +154,14 @@ Why functions instead of macros?
 /////////////////////////
 
 #ifndef someConstant
+#define someConstant
 
 section of code
 
 #endif
 
+
+#include "header.h"
 
 
 --> if someConstant is not defined, we will keep that section of code
@@ -209,6 +223,8 @@ int nums[SIZE];
 
 
 Also good for debugging:
+
+#define DEBUG
 
 #ifdef DEBUG
     //some debugging print statement
