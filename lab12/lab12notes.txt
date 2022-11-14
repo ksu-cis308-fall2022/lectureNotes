@@ -1,0 +1,187 @@
+Project 4 is due Wed Dec 7
+
+Exam 2 is Tues Nov 29 (right after Fall break)
+
+Paper-based, closed-notes, closed-computers.
+1:30-2:30 (60 minutes) -- no lab activity
+
+////////////////////////////////
+
+Quick exam review
+
+Types of questions:
+- Determine what is printed by a code fragment
+- Write/use type definitions (using struct, enum, union, and/or typedef)
+- Write/use preprocessor constants and macros
+- Write a function following a specification, 
+    or a "code snippet" that is several lines long
+- Find errors in code
+ 
+
+Topics covered:
+- Structs
+- Implementing data structures
+- Pointers to structs, dynamically allocating and freeing memory with structs
+- Header files and the #ifndef block
+- Enum, union, typedef
+- #define for constants and macros
+- Function pointers (will cover today)
+ 
+
+Topics from Exam 1 that might still appear on Exam 2:
+- Reading user input with scanf (for ints, doubles, and chars) 
+    and fgets (for strings)
+- strcpy and strlen
+- Pointers, dereferencing operator, address-of operator
+- Call-by-reference functions
+
+//////////////////////////////////
+
+Here are some sample questions:
+
+1) Define a type called ARTIST
+    - can be either painter or singer
+    - keep name, age, #years worked
+    - painters keep type of paint (watercolor, oil, acrylic) and
+        style (realism, abstract, impressionist)
+    - singer keeps voice range (bass, tenor, alto, soprano) and
+        number of concerts performed
+
+
+2) Create an array that can hold pointers to different artists.
+Dynamically create a particular artist, fill with values.
+Free memory.
+
+3) Write a function that adds a new node to the end of a linked list.
+
+typedef struct node {
+    int data;
+    struct node* next;
+} NODE;
+
+
+
+/////////////////////////////////
+
+Function pointers - pointers to executable code
+
+
+/////
+
+Declare:
+
+    return_type (*ptr_name) (args);
+
+ptr_name is the declared variable name, of type function pointer
+    to a function that:
+        - returns something of type return_type
+        - takes parameters args
+
+
+We MUST put () around (*ptr_name)
+    ...or will interpret as declaring a REGULAR function
+        returning return_type*
+
+////
+
+Initialize:
+
+    ptr_name = someFunction;
+
+    -OR-
+
+    ptr_name = &someFunction;
+
+Where someFunction has the specified return_type and args.
+
+///////////////////////////////////
+
+Example.
+
+Suppose we have these functions:
+
+int plus(int a, int b) {
+    return a + b;
+}
+
+int minus(int a, int b) {
+    return a + b;
+}
+
+///
+
+We could declare a function pointer to a function that
+    returns an int and takes 2 int parameters:
+
+int (*op_ptr)(int, int);
+
+
+--> How could we initialize op_ptr?
+
+
+///////////////////////////////
+
+Using a function pointer:
+
+- want to go to that executable code, specify parameters,
+    accept returned value
+
+
+
+result = ptr_name(params);
+
+-OR-
+
+result = (*ptr_name)(params);
+
+
+--> call function pointed to by op_ptr, pass 4 and 3.
+
+/////////////////////////////
+
+Function pointer parameters.
+
+See opPtrs example.
+
+Define doOperation function that takes a function pointer.
+
+(describe C's qsort)
+
+////////////////////////////
+
+Typedef and function pointers.
+
+--> listing syntax for function pointer type is messy
+
+--> nicer to rename the type using typedef
+
+Typedef syntax:
+
+    typedef return_type (*ptr_name) (args);
+
+Now, ptr_name is a new type (of type function pointer to a function
+    with the specified signature).
+
+
+///////////
+
+Example: Add typedef to create a new function pointer type name in
+    operations example
+
+Make doOperation parameter of that type instead
+
+Create array of function pointers in main (using function pointer
+    type name)
+
+/////////////
+
+Lab 12.
+
+Similar idea.
+
+Will define a function pointer to a pet filtering function
+Will create 4 pet filter functions
+Will use an array index to call appropriate function
+
+(This is similar to part of Project 4)
+
