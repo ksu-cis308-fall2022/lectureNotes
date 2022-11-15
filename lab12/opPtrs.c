@@ -35,7 +35,8 @@ int main() {
     int num2 = 4;
 
     //add and multiply num1 and num2
-    int answer = doOperation(multiply, num1, num2);
+    int answer = doOperation(times, num1, num2);
+    printf("Answer: %d\n", answer);
 
     //use only the doOperation function
 
