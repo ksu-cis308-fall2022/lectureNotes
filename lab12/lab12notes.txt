@@ -5,6 +5,11 @@ Exam 2 is Tues Nov 29 (right after Fall break)
 Paper-based, closed-notes, closed-computers.
 1:30-2:30 (60 minutes) -- no lab activity
 
+I'll be out of town from Fri Nov 18 until the end of fall break
+
+Will likely be unavailable over email/Discord.
+    --> you can still post to Discord...another student or a TA might answer
+
 ////////////////////////////////
 
 Quick exam review
@@ -47,10 +52,43 @@ Here are some sample questions:
     - singer keeps voice range (bass, tenor, alto, soprano) and
         number of concerts performed
 
+typedef struct {
+    enum {painter, singer} artType;
+    union {
+        struct {
+            enum {watercolor, oil, acrylic} paintType;
+            enum {realism, abstract, impressionist} style;
+        } paintStuff;
+        struct {
+            enum {bass, tenor, alto, soprano} range;
+            int concerts;
+        } singStuff;
+    } artUnion;
+    char name[30];
+    int age;
+    int years;
+} ARTIST;
+
 
 2) Create an array that can hold pointers to different artists.
 Dynamically create a particular artist, fill with values.
 Free memory.
+
+ARTIST** people = malloc(sizeof(ARTIST*) * 10);
+
+//initalizing index 2
+
+//singer, "Bob Jones", 30, 5 yrs, bass, 2 concerts
+people[2] = malloc(sizeof(ARTIST));
+people[2]->artType = singer;
+strcpy(people[2]->name, "Bob Jones");
+people[2]->age = 30;
+people[2]->years = 5;
+people[2]->artUnion.singStuff.range = bass;
+people[2]->artUnion.singStuff.concerts = 2;
+
+free(people[2]);
+free(people);
 
 3) Write a function that adds a new node to the end of a linked list.
 
@@ -60,6 +98,30 @@ typedef struct node {
 } NODE;
 
 
+//return updated head
+NODE* addToEnd(NODE* head, int newData) {
+    NODE* n = malloc(sizeof(NODE));
+    n->data = newData;
+    n->next = NULL;
+
+    if (head == NULL) {
+        return n;
+    }
+    else {
+        NODE* cur = head;
+        while (cur->next != NULL) {
+            cur = cur->next;
+        }
+        //cur is the last node
+        cur->next = n;
+
+        return head;
+    }
+}
+
+practice: try doing the same thing with:
+
+void addToEnd(NODE** head, int newData)
 
 /////////////////////////////////
 
@@ -110,13 +172,15 @@ int minus(int a, int b) {
 
 ///
 
-We could declare a function pointer to a function that
+How could declare a function pointer to a function that
     returns an int and takes 2 int parameters:
 
-int (*op_ptr)(int, int);
+int (*op_ptr) (int, int);
 
 
---> How could we initialize op_ptr?
+--> How could we initialize our new function pointer?
+
+op_ptr = minus;
 
 
 ///////////////////////////////
@@ -136,6 +200,12 @@ result = (*ptr_name)(params);
 
 
 --> call function pointed to by op_ptr, pass 4 and 3.
+
+int (*op_ptr) (int, int);
+
+op_ptr = minus;
+
+int answer = op_ptr(4, 3);
 
 /////////////////////////////
 
