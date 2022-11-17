@@ -53,7 +53,10 @@ Here are some sample questions:
         number of concerts performed
 
 typedef struct {
-    enum {painter, singer} artType;
+    char name[30];
+    int age;
+    int years;
+    enum {painter, singer} type;
     union {
         struct {
             enum {watercolor, oil, acrylic} paintType;
@@ -63,10 +66,7 @@ typedef struct {
             enum {bass, tenor, alto, soprano} range;
             int concerts;
         } singStuff;
-    } artUnion;
-    char name[30];
-    int age;
-    int years;
+    } artStuff;
 } ARTIST;
 
 
@@ -74,21 +74,24 @@ typedef struct {
 Dynamically create a particular artist, fill with values.
 Free memory.
 
-ARTIST** people = malloc(sizeof(ARTIST*) * 10);
+ARTIST** collection = malloc(sizeof(ARTIST*)*10) ;
 
 //initalizing index 2
 
 //singer, "Bob Jones", 30, 5 yrs, bass, 2 concerts
-people[2] = malloc(sizeof(ARTIST));
-people[2]->artType = singer;
-strcpy(people[2]->name, "Bob Jones");
-people[2]->age = 30;
-people[2]->years = 5;
-people[2]->artUnion.singStuff.range = bass;
-people[2]->artUnion.singStuff.concerts = 2;
 
-free(people[2]);
-free(people);
+collection[2] = malloc(sizeof(ARTIST));
+collection[2]->type = singer;
+strcpy(collection[2]->name, "Bob Jones");
+collection[2]->age = 30;
+collection[2]->years = 5;
+collection[2]->artStuff.singStuff.range = bass;
+collection[2]->artStuff.singStuff.concerts = 2;
+
+free(collection[2]);
+free(collection);
+
+
 
 3) Write a function that adds a new node to the end of a linked list.
 
@@ -100,21 +103,21 @@ typedef struct node {
 
 //return updated head
 NODE* addToEnd(NODE* head, int newData) {
-    NODE* n = malloc(sizeof(NODE));
-    n->data = newData;
-    n->next = NULL;
+    NODE* newnode = malloc(sizeof(NODE));
+    newnode->data = newData;
+    newnode->next = NULL;
 
     if (head == NULL) {
-        return n;
+        return newnode;
     }
     else {
-        NODE* cur = head;
-        while (cur->next != NULL) {
-            cur = cur->next;
+        //find the last node
+        NODE* temp = head;
+        while (temp->next != NULL  {
+            temp = temp->next;
         }
-        //cur is the last node
-        cur->next = n;
-
+        //temp is last
+        temp->next = newnode;
         return head;
     }
 }
@@ -175,7 +178,7 @@ int minus(int a, int b) {
 How could declare a function pointer to a function that
     returns an int and takes 2 int parameters:
 
-int (*op_ptr) (int, int);
+    int (*op_ptr) (int, int);
 
 
 --> How could we initialize our new function pointer?
@@ -200,10 +203,6 @@ result = (*ptr_name)(params);
 
 
 --> call function pointed to by op_ptr, pass 4 and 3.
-
-int (*op_ptr) (int, int);
-
-op_ptr = minus;
 
 int answer = op_ptr(4, 3);
 
