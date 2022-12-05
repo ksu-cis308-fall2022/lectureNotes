@@ -1,0 +1,99 @@
+Project 4 due Wed Dec 7
+
+Optional final exam - Fri Dec 16 2:00-3:50 pm
+
+///////////////////
+
+Exam 2 results
+
+High: 50/50
+Average: 40/50 (80%)
+
+A (45-50): 17 students
+B (40-44): 22 students
+C (35-39): 9 students
+D (30-34): 1 student
+F (below 30): 6 students
+
+Quick exam discussion.
+
+///////////////////////////////
+
+Final exam can replace the lowest of your 2 midterms (if you want)
+
+Changed exams category in Canvas to have 3 entries, dropping the lowest:
+    - Exam 1
+    - Exam 2
+    - Optional final
+
+Right now everyone has a 0 on the optional final, so that one is dropped.
+
+Will change your score there if you take the final.
+
+///////////////////////////////
+
+Final exam structure:
+
+- worth same number of points (50) as regular exam
+- likely slightly longer in length, but not twice as long
+- can have the full final period (2:00-3:50 pm) to work
+- closed notes/computers
+- all "open-ended" problems
+- cumulative
+
+--> see list of topics for exams 1 and 2
+
+--> pay close attention to everything with pointers and to using
+    structs to build data structures
+
+//////////////////////////
+
+Lab 13: void pointers
+
+Languages like Java and C# use "object" as a type that 
+    can be (almost) anything
+
+Want to have data structures and the like that can be used
+    to hold different types
+
+Solution: use a void pointer
+
+////////////////////////
+
+Void pointers can store ANY pointer reference type
+
+int num = 7;
+char* str = "bob";
+PET* pet = init_pet(...);
+
+void* ptr = &num;
+
+ptr = str;
+
+ptr = pet;
+
+--> need to cast void pointer to actual pointer type before
+dereferencing or doing pointer arithmetic
+
+Example: test.c
+
+
+////////////////////////
+
+Lab 13: create linked list using a void* for the data
+
+can store ints, strings, or pets
+
+Need to know: size of each type, how to print each type
+
+    How can we have a different print function for each type?
+
+
+--> see types in linkedlist.h
+
+--> describe function in linkedlist.c
+
+--> see notes in lab13.c
+
+    (how to create a list?)
+
