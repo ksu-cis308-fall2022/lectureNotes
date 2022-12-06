@@ -2,6 +2,8 @@ Project 4 due Wed Dec 7
 
 Optional final exam - Fri Dec 16 2:00-3:50 pm
 
+Let me know if you are not taking the final
+
 ///////////////////
 
 Exam 2 results
@@ -10,12 +12,21 @@ High: 50/50
 Average: 40/50 (80%)
 
 A (45-50): 17 students
-B (40-44): 22 students
+B (40-44): 23 students
 C (35-39): 9 students
 D (30-34): 1 student
 F (below 30): 6 students
 
 Quick exam discussion.
+
+add_to_end(&list_array[2], 2);
+
+#define CIRCLE_AREA(r) PI*(r)*(r)
+
+CIRCLE_AREA(4-2)
+
+
+match_ptr pos_ptr = count_pos;
 
 ///////////////////////////////
 
@@ -83,15 +94,18 @@ Example: test.c
 Lab 13: create linked list using a void* for the data
 
 can store ints, strings, or pets
+    for its data: void*
 
 Need to know: size of each type, how to print each type
 
     How can we have a different print function for each type?
+    store a function pointer
+    store the size of the type
 
 
 --> see types in linkedlist.h
 
---> describe function in linkedlist.c
+--> describe functions in linkedlist.c
 
 --> see notes in lab13.c
 
