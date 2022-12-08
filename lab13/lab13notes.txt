@@ -20,6 +20,25 @@ F (below 30): 6 students
 Quick exam discussion.
 
 
+enum  {swimming, running, cycling} sport;
+
+NODE** list_array = malloc(sizeof(NODE*)*5);
+for (int i = 0; i < 5; i++) {
+    list_array[i] = NULL;
+}
+
+
+add_to_end(&list_array[2], 2);
+
+
+#define CIRCLE_AREA(r) PI * (r) * (r)
+
+CIRCLE_AREA(4-2)
+
+
+match_ptr pos_ptr = count_pos;
+
+
 ///////////////////////////////
 
 Final exam can replace the lowest of your 2 midterms (if you want)
@@ -91,6 +110,7 @@ can store ints, strings, or pets
 Need to know: how to print each type
 
     How can we have a different print function for each type?
+    function pointer field
 
 
 
